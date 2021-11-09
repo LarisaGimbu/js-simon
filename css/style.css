@@ -1,0 +1,16 @@
+body{
+  background-color: antiquewhite;
+}
+
+.content-container{
+  width: 100%;
+  height: 100vh;
+}
+
+.box-number{
+  width: 250px;
+  height: 80px;
+  background-color: rgb(80, 50, 11);
+  border-radius: 15px;
+  color: white;
+}
