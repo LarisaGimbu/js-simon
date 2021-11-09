@@ -22,16 +22,23 @@ for(let i=0; i<5; i++){
 
   boxNumber.append(spanElement);
 
-  arrRandomNumber.push(getRandomNumber(1,100));
+  if(!arrRandomNumber.includes(getRandomNumber(1,100))){
+    arrRandomNumber.push(getRandomNumber(1,100));
+    spanElement.innerHTML = arrRandomNumber[i];
+  }else{
+    i--;
+    console.log('numero ripetuto',arrRandomNumber[i]);
+  }
+  
 
-  spanElement.innerHTML = arrRandomNumber[i];
+  
 
   
 }
 
 
 //far partire un timer di 30s
-setTimeout((userNumbers), 1000)
+setTimeout((userNumbers), 30000)
 
 
 /*****FUNZIONI */
@@ -41,7 +48,7 @@ function getRandomNumber(min, max){
 }
 
 //1. chiedere all'utente di inserire 5 volte un numero
-//2. se arr numeri casuali include numero utente pushare in arr numeri indovinati
+//2. se arr numeri casuali include numero utente pushare in arr numeri indovinati solo se non è già esistente in arr numeri indovinati
 
 function userNumbers(){
   for(let i = 0; i < 5; i++){
@@ -49,7 +56,7 @@ function userNumbers(){
 
     console.log(arrRandomNumber);
     console.log(userNumber);
-    if(arrRandomNumber.includes(parseInt(userNumber))){
+    if(arrRandomNumber.includes(parseInt(userNumber)) && !(arrGuessedNumbers.includes(parseInt(userNumber)))){
       arrGuessedNumbers.push(userNumber);
     }
 
