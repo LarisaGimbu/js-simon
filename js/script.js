@@ -16,13 +16,14 @@ let arrGuessedNumbers = [];
 //visualizzare in pagine 5 numeri random
 for(let i=0; i<5; i++){
 
-  const spanElement = document.createElement('span');
-
-  spanElement.className = 'me-3';
-
-  boxNumber.append(spanElement);
 
   if(!arrRandomNumber.includes(getRandomNumber(1,100))){
+    const spanElement = document.createElement('span');
+
+    spanElement.className = 'me-3';
+  
+    boxNumber.append(spanElement);
+
     arrRandomNumber.push(getRandomNumber(1,100));
     spanElement.innerHTML = arrRandomNumber[i];
   }else{
