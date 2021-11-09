@@ -6,6 +6,13 @@
 
 const boxNumber = document.getElementById('box-number');
 
+//array dei numeri random
+let arrRandomNumber = [];
+
+//array numeri indovinati
+let arrGuessedNumbers = [];
+
+//visualizzare in pagine 5 numeri random
 for(let i=0; i<5; i++){
 
   const spanElement = document.createElement('span');
@@ -13,12 +20,41 @@ for(let i=0; i<5; i++){
   spanElement.className = 'me-3';
 
   boxNumber.append(spanElement);
-  spanElement.innerHTML += getRandomNumber(1,100);
 
-  console.log(spanElement);
+  arrRandomNumber.push(getRandomNumber(1,100));
+
+  spanElement.innerHTML = arrRandomNumber[i];
+
+  
 }
 
 
+//far partire un timer di 30s
+setTimeout((userNumbers), 1000)
+
+
+/*****FUNZIONI */
+//creare numeri random fra 1 e 100
 function getRandomNumber(min, max){
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
+
+//1. chiedere all'utente di inserire 5 volte un numero
+//2. se arr numeri casuali include numero utente pushare in arr numeri indovinati
+
+function userNumbers(){
+  for(let i = 0; i < 5; i++){
+    const userNumber = parseInt(prompt('Inserisci un numero'));
+
+    console.log(arrRandomNumber);
+    console.log(userNumber);
+    if(arrRandomNumber.includes(parseInt(userNumber))){
+      arrGuessedNumbers.push(userNumber);
+    }
+
+   
+  }
+  console.log(arrGuessedNumbers);
+}
+
+
