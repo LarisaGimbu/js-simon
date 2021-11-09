@@ -5,6 +5,7 @@
  */
 
 const boxNumber = document.getElementById('box-number');
+const text = document.querySelector('p');
 
 //array dei numeri random
 let arrRandomNumber = [];
@@ -55,6 +56,20 @@ function userNumbers(){
    
   }
   console.log(arrGuessedNumbers);
+  boxNumber.innerHTML = arrGuessedNumbers;
+  textTemplate();
+}
+
+
+// se arrGuessedNumbers è diverso da 0 allora scrivi hai indovinato arr.lenght numeri 
+// altrimenti scrivi non hai indovinato nessun numero
+function textTemplate(){
+  if(arrGuessedNumbers.length !== 0){
+    text.innerHTML = `Hai indovinato ${arrGuessedNumbers.length} numeri:`;
+  }else{
+    text.innerHTML = `Purtroppo non hai indovinato nessun numero`;
+    boxNumber.innerHTML = 'RITENTA!'
+  }
 }
 
 
