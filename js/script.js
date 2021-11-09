@@ -16,12 +16,11 @@ let arrGuessedNumbers = [];
 //visualizzare in pagine 5 numeri random
 for(let i=0; i<5; i++){
 
-
   if(!arrRandomNumber.includes(getRandomNumber(1,100))){
     const spanElement = document.createElement('span');
 
     spanElement.className = 'me-3';
-  
+
     boxNumber.append(spanElement);
 
     arrRandomNumber.push(getRandomNumber(1,100));
@@ -30,33 +29,29 @@ for(let i=0; i<5; i++){
     i--;
     console.log('numero ripetuto',arrRandomNumber[i]);
   }
-  
-
-  
-
-  
 }
 
 
 //far partire un timer di 30s
-setTimeout((userNumbers), 30000)
+setTimeout((userNumbers), 30000);
 
 
 /*****FUNZIONI */
 //creare numeri random fra 1 e 100
 function getRandomNumber(min, max){
-  return Math.floor(Math.random() * (max - min + 1) + min)
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 //1. chiedere all'utente di inserire 5 volte un numero
 //2. se arr numeri casuali include numero utente pushare in arr numeri indovinati solo se non è già esistente in arr numeri indovinati
 
 function userNumbers(){
-  for(let i = 0; i < 5; i++){
+  for(let i = 0; i < arrRandomNumber.length; i++){
     const userNumber = parseInt(prompt('Inserisci un numero'));
 
     console.log(arrRandomNumber);
     console.log(userNumber);
+    
     if(arrRandomNumber.includes(parseInt(userNumber)) && !(arrGuessedNumbers.includes(parseInt(userNumber)))){
       arrGuessedNumbers.push(userNumber);
     }
@@ -76,7 +71,7 @@ function textTemplate(){
     text.innerHTML = `Hai indovinato ${arrGuessedNumbers.length} numeri:`;
   }else{
     text.innerHTML = `Purtroppo non hai indovinato nessun numero`;
-    boxNumber.innerHTML = 'RITENTA!'
+    boxNumber.innerHTML = 'RITENTA!';
   }
 }
 
