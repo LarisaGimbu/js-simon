@@ -6,6 +6,7 @@
 
 const boxNumber = document.getElementById('box-number');
 const text = document.querySelector('p');
+const totalNumbers = parseInt(prompt('Quanti numeri vuoi provare a memorizzare?'));
 
 //array dei numeri random
 let arrRandomNumber = [];
@@ -14,7 +15,7 @@ let arrRandomNumber = [];
 let arrGuessedNumbers = [];
 
 //visualizzare in pagine 5 numeri random
-for(let i=0; i<5; i++){
+while(arrRandomNumber.length < totalNumbers){
 
   if(!arrRandomNumber.includes(getRandomNumber(1,100))){
     const spanElement = document.createElement('span');
@@ -24,10 +25,7 @@ for(let i=0; i<5; i++){
     boxNumber.append(spanElement);
 
     arrRandomNumber.push(getRandomNumber(1,100));
-    spanElement.innerHTML = arrRandomNumber[i];
-  }else{
-    i--;
-    console.log('numero ripetuto',arrRandomNumber[i]);
+    spanElement.innerHTML = getRandomNumber(1,100);
   }
 }
 
