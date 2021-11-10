@@ -7,6 +7,9 @@
 const boxNumber = document.getElementById('box-number');
 const text = document.querySelector('p');
 const totalNumbers = parseInt(prompt('Quanti numeri vuoi provare a memorizzare?'));
+const secondsToWait = parseInt(prompt('Di quanti secondi hai bisogno per memorizzare i seguenti numeri?'))
+
+text.innerHTML = `Hai ${secondsToWait} secondi per memorizzare i seguenti numeri:`
 
 //array dei numeri random
 let arrRandomNumber = [];
@@ -24,14 +27,15 @@ while(arrRandomNumber.length < totalNumbers){
 
     boxNumber.append(spanElement);
 
-    arrRandomNumber.push(getRandomNumber(1,100));
     spanElement.innerHTML = getRandomNumber(1,100);
+    arrRandomNumber.push(parseInt(spanElement.innerHTML));
+    
   }
 }
 
 
 //far partire un timer di 30s
-setTimeout((userNumbers), 30000);
+setTimeout((userNumbers), secondsToWait * 1000);
 
 
 /*****FUNZIONI */
@@ -66,7 +70,7 @@ function userNumbers(){
 // altrimenti scrivi non hai indovinato nessun numero
 function textTemplate(){
   if(arrGuessedNumbers.length !== 0){
-    text.innerHTML = `Hai indovinato ${arrGuessedNumbers.length} numeri:`;
+    text.innerHTML = `Hai indovinato ${arrGuessedNumbers.length} numeri su ${arrRandomNumber.length}`;
   }else{
     text.innerHTML = `Purtroppo non hai indovinato nessun numero`;
     boxNumber.innerHTML = 'RITENTA!';
